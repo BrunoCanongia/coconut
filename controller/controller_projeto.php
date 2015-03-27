@@ -67,6 +67,21 @@ class ControllerProjeto {
 		return $proj_array;
 	}
 
+	public function getProjetosAleatorios() {
+		$db = new Database;
+		$proj_array = array();
+
+		$projetos = $db->getProjetosAleatorios();
+		foreach($projetos as $proj) {
+			$id = $proj['id'];
+			$projeto = $this->getProjetoCompleto($id);
+			$proj_array[] = $projeto;
+		}
+
+		return $proj_array;
+		
+	}
+
 	public function getProjetosByOwner($id) {
 		$db = new Database;
 		$proj_array = array();

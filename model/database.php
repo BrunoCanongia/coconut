@@ -247,6 +247,13 @@ class Database extends PDO {
 		$result = $this->select($sql);
 		return $result;
 	}
+
+	public function getProjetosAleatorios() {
+		$sql = "SELECT id FROM projeto WHERE ativo = 1 ORDER BY rand() LIMIT 3";
+		$result = $this->select($sql);
+		return $result;
+
+	}
 	
 	public function getProjeto($id) {
 

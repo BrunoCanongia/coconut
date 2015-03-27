@@ -104,7 +104,10 @@
 		</div>
 		<?php endforeach; ?>
 		<br/>
+
+		<?php if(isset($template['gauge_access'])): ?>
 		<div id="chart_div" style=""></div>
+		<?php endif; ?>
 
 		
 	</div>

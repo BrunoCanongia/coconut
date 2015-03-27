@@ -34,6 +34,8 @@ if ($data['statusPagamento'] == 4) {
 	$qtdComprada += 1;
 	$colab->setQtdComprada($qtdComprada);
 	$colab = $db->saveColaboracao($colab);
+
+	// pagamento, verificar se o projeto foi concluído e informar os interessados
 }
 
 if ($data['statusPagamento'] == 7) {  //implementar redução de backer

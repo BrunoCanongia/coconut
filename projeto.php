@@ -40,6 +40,13 @@ $valorArrecadado = $proj['projeto']->getValorArrecadado();
 $diasRestantes = $proj['projeto']->getDiasRestantes();
 $prazo = $proj['projeto']->getPrazo();
 
+// exibe apenas para owner e admins:
+$vip = $db->getVipList();
+if (isset($_SESSION['email']) && in_array($_SESSION['email'], $vip) || (isset($_SESSION['id']) && ($_SESSION['id'] == $proj['idProponente'])) ) {
+	$template['gauge_access'] = true;
+}
+
+
 $gauge = (((double)$valorArrecadado/(double)$valor) + ((double)$diasRestantes/(double)$prazo)) / 2.0;
 $template['gauge'] = round($gauge * 100);
 

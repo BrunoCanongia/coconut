@@ -48,15 +48,26 @@ hr {
 	margin-top: 3px;
 }
 
-.destaque {
+.painelzao {
 	text-align: center;
 }
 
-.destaque img {
+.painelzao img {
 	max-width: 100%;
 	max-height: auto;
     vertical-align: middle;
 }
+
+.destaque {
+	background-color: black; 
+	padding: 50px 0; 
+	color: white;
+}
+
+.numeroGrande {
+	font-size: 50px;
+}
+
 
 .userpic img {
 	width: 50px;
@@ -236,7 +247,7 @@ html, body { height: 100%; }
 .footer { background-color: #252525; }
 
 .footer-busca {
-	padding-top: 15px;
+	#padding-top: 15px;
 }
 
 
@@ -269,6 +280,12 @@ html, body { height: 100%; }
 
 	
 	
+}
+
+@media(min-width: 768px) and (max-width: 1166px) {
+	.destaque h1 {
+		font-size: 24px;
+	}
 }
 
 @media (min-width: 992px) { 
