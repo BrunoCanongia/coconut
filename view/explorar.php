@@ -63,7 +63,7 @@
 			</div>
 
 			<div class='cardTextoContainer'>
-				<div style='height: 300px;'>
+				<div class='card-spacer'>
 					<div class='col-sm-12 cardNome'>
 						<h4>
 							<?php if($proj['projeto']->getPorcentagem() >= 100): ?>

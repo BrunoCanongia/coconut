@@ -25,6 +25,8 @@
 		<script src="lib/janja.js"></script>
 
 
+
+
 	</head>
 	<body>
 		<div class="page-wrap">
@@ -90,5 +92,19 @@
 				  });
 				});
 			</script>
+
+
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+
+         $("#myCarousel").carousel();
+
+    });
+
+    </script>
+
+
+
   </body>
 </html>

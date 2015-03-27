@@ -33,7 +33,7 @@
 		</div>
 		<div class='col-xs-12 col-sm-3'>
 			<form>
-			<div class="input-group footer-busca">
+			<div class="input-group footer-busca" style="padding-top: 15px;">
 			  <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
 			  <input class="form-control" type="password" placeholder="Busca">
 			</div>
