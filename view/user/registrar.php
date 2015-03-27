@@ -28,5 +28,8 @@
 		</div>
 		<button type="submit" class="btn btn-success pull-right">Registrar</button>
 		<br/>
+		<br/>
+		<br/>
 	</form>
 </div>
+

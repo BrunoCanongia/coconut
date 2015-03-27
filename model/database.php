@@ -13,6 +13,17 @@ class Database extends PDO {
 			'db_password' => 'janjaCoconut'
 		);
 
+		//servidor solucionática
+		/*
+		$config = array(
+			'db_type' => 'mysql',
+			'db_host' => 'localhost',
+			'db_name' => 'bruno_solucionatica',
+			'db_username' => 'bruno_solucionat',
+			'db_password' => 's0luc10n4t1c42015'
+		);
+		*/
+
 		// servidor janja
 		/*
 		$config = array(
