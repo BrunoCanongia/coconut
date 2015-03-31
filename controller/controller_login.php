@@ -88,6 +88,7 @@ class ControllerLogin {
 				$user->setSenha($senha);
 				$user->setNome($nome);
 				$user = $db->saveUser($user);
+				$db->redefinirSenha($user);
 			}
 		// caso não exista, cadastra
 		} else {
