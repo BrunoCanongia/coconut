@@ -14,7 +14,7 @@
 			<input name="frase" type="text" class="form-control" id="inputFrase" >
 		</div>
 		<div class="form-group">
-			<label for="categoria"Categoria</label>
+			<label for="categoria">Categoria</label>
 			<select name="categoria" class="form-control" id="categoria" >
 				<?php foreach($template['categorias'] as $cat): ?>
 				<option value="<?=$cat['id']?>"><?=$cat['categoria']?></option>
