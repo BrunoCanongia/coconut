@@ -386,15 +386,43 @@ class Database extends PDO {
 		return $colArray;
 	}
 
-	public function getBackersByProjeto($id) {
-		$sql = "SELECT DISTINCT user_colaboracao.idUser as id from user_colaboracao, colaboracao, projeto WHERE 
-		user_colaboracao.idColaboracao = colaboracao.id 
-		AND colaboracao.idProjeto = projeto.id 
-		AND projeto.id = " . $id;
+
+	public function getBackersByProjeto($idProjeto, $pag=1, $pp=8) {
+
+		# total de páginas
+		$sql = "SELECT COUNT(user.id) as count 
+		FROM user, user_colaboracao, colaboracao 
+		WHERE user_colaboracao.idUser = user.id AND user_colaboracao.idColaboracao = colaboracao.id 
+		AND colaboracao.idProjeto = $idProjeto";
+
+		$result = $this->select($sql);
+		$total_registros = $result[0]['count'];
+		$num_paginas = intval($total_registros / $pp);
+
+		if ($total_registros % $pp) { $num_paginas++; }
+
+		$start = ($pag * $pp) - $pp;
+		$end   = $pp;
+
+
+
+		$sql = "SELECT user.id as id, user.nome as nome, user.email as email, colaboracao.valor as valor, 
+		user_colaboracao.dataRegistro as data FROM user, user_colaboracao, colaboracao 
+		WHERE user_colaboracao.idUser = user.id AND user_colaboracao.idColaboracao = colaboracao.id 
+		AND colaboracao.idProjeto = $idProjeto 
+		ORDER BY user_colaboracao.dataRegistro DESC 
+		LIMIT $start ,$end;";
 
 		$result = $this->select($sql);
 
-		return $result;
+		$retorno['total_registros'] = $total_registros;
+		$retorno['num_paginas'] = $num_paginas;
+		$retorno['pagina_atual'] = $pag;
+		$retorno['result'] = $result;
+		
+		
+
+		return $retorno;
 	}
 
 

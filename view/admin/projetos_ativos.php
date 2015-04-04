@@ -16,8 +16,9 @@
 			<th>#</th>
 			<th>CATEGORIA</th>
 			<th>PROJETO</th>
-			<th class='center_text'>REVISAR</th>
-			<th class='center_text'>CONFIG</th>
+			<th style='text-align: center;'>REVISAR</th>
+			<th style='text-align: center;'>CONFIG</th>
+			<th style='text-align: center;'>BACKERS</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -27,8 +28,9 @@
 			<td class='editar'><?= $proj['id']?></td>
 			<td><?= $proj['categoria']?></td>
 			<td><?= $proj['nome'] ?></td>
-			<td class='editar center_text centro'><a href='projeto.php?id=<?= $proj['id']?>&mode=007' target="blank"><img src='img/tango/contact-new.png'></a></td>
-			<td class='editar center_text centro'><a href='adm_info_proj.php?id=<?= $proj['id']?>&local=ativos'><img src='img/tango/document-properties.png'></a></td>
+			<td style='text-align: center;'><a href='projeto.php?id=<?= $proj['id']?>&mode=007' target="blank"><i class="fa fa-coffee fa-2x"></a></td>
+			<td style='text-align: center;'><a href='adm_info_proj.php?id=<?= $proj['id']?>&local=ativos'><i class="fa fa-gears fa-2x"></a></td>
+			<td style='text-align: center;'><a href='adm_projeto_backers.php?id=<?= $proj['id']?>&local=ativos'><i class="fa fa-money fa-2x"></i></a></td>
 		</tr>
 			
 		<?php }

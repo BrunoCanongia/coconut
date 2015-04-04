@@ -21,7 +21,7 @@ class ControllerProjeto {
 		
 		// id do video para embed
 
-		$data['backers'] = $backers;
+		$data['backers'] = $backers['total_registros'];
 		$data['projeto'] = $proj;
 		$data['idProponente'] = $user->getId();
 		$data['proponente'] = $user;
@@ -39,6 +39,7 @@ class ControllerProjeto {
 		return $data;
 	}
 
+	
 	public function getProjetos($idCat = null, $ativo = null) {
 		$db = new Database;
 		$proj_array = array();
