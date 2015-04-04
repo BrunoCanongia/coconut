@@ -15,6 +15,9 @@ if(!isset($_SESSION['email']) || !in_array($_SESSION['email'], $vip)) {
 	exit;
 }
 
+$template['pag'] = isset($_GET['pag']) ? $_GET['pag'] : 1;
+
+
 $template['menuAtivo'] = $_GET['local'] == "ativos" ? 2 : 1;
 
 $nome = explode(" ", $_SESSION['nome']);
@@ -26,10 +29,9 @@ $proj = $db->getProjeto($id);
 
 $template['id'] = $id;
 $template['nome'] = $proj->getNome();
-$backers = $db->getBackersByProjeto($id);
+$backers = $db->getBackersByProjeto($id, $template['pag'], 20); // 20 registros por página
 $template['backers'] = $backers['result'];
 $template['num_paginas'] = $backers['num_paginas'];
-$template['pag'] = $backers['pagina_atual'];
 
 
 
