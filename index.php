@@ -20,6 +20,7 @@ if (isset($_SESSION['id']) && !isset($_SESSION['fbId'])) {
 $db = new Database;
 $ct = new ControllerProjeto;
 $proj = $ct->getProjetoCompleto(3);
+$template['id']            = $proj['projeto']->getId();
 $template['video']         = $proj['projeto']->getVideo();
 $template['nome']          = $proj['projeto']->getNome();
 $template['categoria']     = $proj['projeto']->getCategoria();

@@ -2,10 +2,10 @@
 <h3>Projetos ativos (<?=$template['qtdAtivos']?>)</h3>
 <br/>
 
-	<form>
+	<form action="adm_projetos_ativos.php" method="POST">
 	<div class="input-group col-xs-4">
 	  <span class="input-group-addon"><i class="fa fa-search fa-fw"></i></span>
-	  <input class="form-control" type="password" placeholder="Busca">
+	  <input class="form-control" type="text" name="busca" placeholder="Busca">
 	</div>
 	</form>
 	<br/>

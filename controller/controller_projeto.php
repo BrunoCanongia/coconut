@@ -54,6 +54,23 @@ class ControllerProjeto {
 		return $proj_array;
 	}
 
+
+	public function getProjetosBusca($termo) {
+		$db = new Database;
+		$proj_array = array();
+		$projetos = $db->getProjetosBusca($termo);
+
+		foreach($projetos as $proj) {
+			$id = $proj['id'];
+			$projeto = $this->getProjetoCompleto($id);
+			$proj_array[] = $projeto;
+		}
+
+		return $proj_array;
+	}
+
+
+
 	public function getProjetosApoiados($id) {
 		$db = new Database;
 		$proj_array = array();

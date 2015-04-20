@@ -54,8 +54,6 @@
 			          <ul class="dropdown-menu" role="menu">
 			            <li><a href="adm_projetos_abertos.php">Abertos</a></li>
 			            <li><a href="adm_projetos_ativos.php">Ativos</a></li>
-			            <li class="divider"></li>
-			            <li><a href="#">Relatório</a></li>
 			          </ul>
 			        </li>
 			        <li class="active"><a href="#">MoIP</a></li>

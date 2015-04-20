@@ -5,16 +5,17 @@ class Database extends PDO {
 	public function __construct() {
 		
 		// servidor local
+		/*
 		$config = array(
 			'db_type' => 'mysql',
 			'db_host' => 'localhost',
 			'db_name' => 'Coconut',
 			'db_username' => 'janjaCoconut',
 			'db_password' => 'janjaCoconut'
-		);
+		);*/
 
 		//servidor solucionática
-		/*
+		
 		$config = array(
 			'db_type' => 'mysql',
 			'db_host' => 'localhost',
@@ -22,7 +23,7 @@ class Database extends PDO {
 			'db_username' => 'bruno_solucionat',
 			'db_password' => 's0luc10n4t1c42015'
 		);
-		*/
+		
 
 		// servidor janja
 		/*
@@ -255,6 +256,13 @@ class Database extends PDO {
 				$sql .= " WHERE ativo = " . $ativo;
 			}
 		}
+		$result = $this->select($sql);
+		return $result;
+	}
+
+	public function getProjetosBusca($termo="") {
+		$sql = "SELECT id FROM projeto WHERE
+		ativo = 1 AND nome LIKE '%" . $termo . "%'";
 		$result = $this->select($sql);
 		return $result;
 	}

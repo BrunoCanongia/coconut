@@ -44,7 +44,7 @@
 				<br/>
 				<span class='numeroGrande'><?= $template['pct']?>%</span>&nbsp;&nbsp;financiado
 				<br/><br/>
-				<button class='btn btn-lg btn-success'>Saiba mais</button>
+				<a href='projeto.php?id=<?= $template['id'] ?>' class='btn btn-lg btn-success'>Saiba mais</a>
 			</div>
 		</div>
 	</div>

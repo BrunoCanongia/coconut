@@ -8,6 +8,7 @@
 		<tr>
 			<th>#</th>
 			<th>NOME</th>
+			<th>EMAIL</th>
 			<th>VALOR</th>
 			<th>DATA</th>
 		</tr>
@@ -18,6 +19,7 @@
 		<tr>
 			<td><?= $backer['id']?></td>
 			<td><?= $backer['nome']?></td>
+			<td><?= $backer['email']?></td>
 			<td><?= $backer['valor']?></td>
 			<td><?= $backer['data']?></td>
 		</tr>
