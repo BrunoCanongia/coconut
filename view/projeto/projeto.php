@@ -22,9 +22,9 @@
 			<?php endif; ?>
 			
 
-			<?php if($template['ativo'] == 0): ?>
+			<?php if($template['idCiclo'] <= 3): ?>
 				<div class="btn-group">
-					<?php if($template['analise'] == 1): ?>
+					<?php if($template['idCiclo'] == 2): ?>
 						<a href="#" class="btn btn-danger">Em análise</a>
 					<?php else: ?>
 						<a href="alterar_projeto.php?id=<?=$template['idProjeto']?>" class="btn btn-default">Alterar</a>
@@ -90,7 +90,7 @@
 			<p> (<?=$apoio['qtdComprada']?> de <?=$apoio['qtdTotal']?>)</p>
 			<?php endif; ?>
 
-			<?php if(isset($_SESSION['id']) && $template['ativo'] == 1 && $template['diasRestantes'] > 0):?>
+			<?php if(isset($_SESSION['id']) && $template['idCiclo'] == 4 && $template['diasRestantes'] > 0):?>
 					
 					<a href="colaborar.php?id=<?=$apoio['id']?>">apoiar</a>
 					

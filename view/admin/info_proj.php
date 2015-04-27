@@ -30,13 +30,13 @@
 	?></p>
 	<br/>
 <?php if($template['projAnalise'] == 1 && $template['projAtivo'] == 0): ?>
-	<a href="adm_ativar_proj.php?id=<?=$template['id']?>">Clique para ativar o projeto</a><br/><br/>
-	<a href="alterar_projeto.php?id=<?=$template['id']?>&admin=1" target='blank'>Clique para editar o projeto</a><br/><br/>
-	<a href="adm_devolver_proj.php?id=<?=$template['id']?>">Clique para devolver o projeto</a>
+	<a href="adm_ativar_proj.php?id=<?=$template['id']?>" class='btn btn-primary'>ATIVAR O PROJETO</a><br/><br/>
+	<a href="alterar_projeto.php?id=<?=$template['id']?>&admin=1" target='blank' class='btn btn-primary'>EDITAR O PROJETO</a><br/><br/>
+	<a href="adm_devolver_proj.php?id=<?=$template['id']?>" class='btn btn-primary'>DEVOLVER PROJETO</a>
 <?php endif; ?>
 
 <?php if($template['projAtivo'] == 1): ?>
-	<a href="adm_desativar_proj.php?id=<?=$template['id']?>">Clique para desativar o projeto</a><br/><br/>
+	<a href="adm_desativar_proj.php?id=<?=$template['id']?>" class='btn btn-primary'>DESATIVAR PROJETO</a><br/><br/>
 <?php endif; ?>
 
-<br/><br/>
+<br/><br/><br/><br/>

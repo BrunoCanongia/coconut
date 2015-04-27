@@ -15,10 +15,10 @@ $ct->comprarCotas($idUser, $_POST['id'], $seed);
 
 $moip = new MoIP;
 // JanjaDev teste
- $moip->setCredential(array("key"=>"4VQGQOGKWA1QBHJEOR0HTAXNFSYIYNRYK9BDZ6YU", "token"=>"JB2QWDEXN3HKYH28JBZUFKFWHI1PJMJZ"));
+$moip->setCredential(array("key"=>"4VQGQOGKWA1QBHJEOR0HTAXNFSYIYNRYK9BDZ6YU", "token"=>"JB2QWDEXN3HKYH28JBZUFKFWHI1PJMJZ"));
 
 // Solucionatica
-//$moip->setCredential(array("key"=>"RXaEXLNm48cT", "token"=>"CbuaIurFy5ETd0GSbj"));
+// $moip->setCredential(array("key"=>"MA73AACTTDBDYSOVG6PC9KO97H12BOZF", "token"=>"XHQ9CXHMKLOJ75LTLDJGUDMOMPUVNQXOPN13PWQR"));
 
 $moip->setUniqueId($seed);
 $moip->setReason('Solucionatica - Fase de testes');

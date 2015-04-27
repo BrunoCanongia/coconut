@@ -29,8 +29,7 @@ $template['frase']         = $proj['projeto']->getFrase();
 $template['descricao']     = $proj['projeto']->getDescricao();
 $template['apoio']         = $proj['projeto']->getColaboracao();
 $template['idProjeto']     = $proj['projeto']->getId();
-$template['analise']       = $proj['projeto']->getAnalise();
-$template['ativo']         = $proj['projeto']->getAtivo();
+$template['idCiclo']       = $proj['projeto']->getIdCiclo();
 $template['pct']           = $proj['projeto']->getPorcentagem();
 $template['page']          = "projeto/projeto";
 
@@ -66,7 +65,7 @@ if (isset($_SESSION['id'])) {
 	}
 	
 	// mensagem
-	if($template['ativo'] == 0 && $template['analise'] == 0) {
+	if($template['idCiclo'] == 1) {
 		$template['msg'] = "Envie seu projeto para análise.";
 	}
 	

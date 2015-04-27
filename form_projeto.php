@@ -17,8 +17,7 @@ if (isset($_POST['nome'])) {
 	$proj->setPrazo((int)$_POST['prazo']);
 	$proj->setVideo($_POST['video']);
 	$proj->setLinks($_POST['links']);
-	$proj->setAtivo(0); // precisa passar por aprovação para ativar
-	$proj->setAnalise(0);
+	$proj->setIdCiclo(1); // precisa passar por aprovação para ativar
 
 	// manda pro controlador fazer a validação
 	$ctr = new ControllerProjeto;

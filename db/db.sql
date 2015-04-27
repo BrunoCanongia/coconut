@@ -34,6 +34,12 @@ CREATE TABLE categoria (
 	PRIMARY KEY(id)
 )ENGINE=InnoDB;
 
+CREATE TABLE ciclo (
+	id INT NOT NULL AUTO_INCREMENT,
+	ciclo CHAR(32),
+	PRIMARY KEY(id)
+)ENGINE=InnoDB;
+
 CREATE TABLE projeto (
 	id INT NOT NULL AUTO_INCREMENT,
 	idUser INT NOT NULL,
@@ -48,9 +54,9 @@ CREATE TABLE projeto (
 	links VARCHAR(256) NULL,
 	dataRegistro TIMESTAMP NOT NULL DEFAULT NOW(),
 	dataAtivacao TIMESTAMP NULL,
-	ativo INT(1) NOT NULL,
-	analise INT(1) NOT NULL,
+	idCiclo INT(1) NOT NULL,
 	PRIMARY KEY (id),
+	FOREIGN KEY (idCiclo) REFERENCES ciclo(id) ON DELETE RESTRICT,
 	FOREIGN KEY (idUser) REFERENCES user(id) ON DELETE RESTRICT,
 	FOREIGN KEY (idCategoria) REFERENCES categoria(id) ON DELETE RESTRICT
 )ENGINE=InnoDB;
@@ -117,5 +123,10 @@ INSERT INTO categoria (categoria) VALUES ('mobilidade urbana');
 INSERT INTO categoria (categoria) VALUES ('intervenção urbana');
 INSERT INTO categoria (categoria) VALUES ('arte de rua');
 INSERT INTO categoria (categoria) VALUES ('inclusão social');
+
+INSERT INTO ciclo (ciclo) VALUES ('inativo');
+INSERT INTO ciclo (ciclo) VALUES ('análise');
+INSERT INTO ciclo (ciclo) VALUES ('ativo');
+INSERT INTO ciclo (ciclo) VALUES ('memória');
 
 INSERT INTO vip (email) VALUES ('brunocanongia@gmail.com');

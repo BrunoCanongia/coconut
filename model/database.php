@@ -5,25 +5,25 @@ class Database extends PDO {
 	public function __construct() {
 		
 		// servidor local
-		/*
+		
 		$config = array(
 			'db_type' => 'mysql',
 			'db_host' => 'localhost',
 			'db_name' => 'Coconut',
 			'db_username' => 'janjaCoconut',
 			'db_password' => 'janjaCoconut'
-		);*/
+		);
 
 		//servidor solucionática
 		
-		$config = array(
+		/*$config = array(
 			'db_type' => 'mysql',
 			'db_host' => 'localhost',
 			'db_name' => 'bruno_solucionatica',
 			'db_username' => 'bruno_solucionat',
 			'db_password' => 's0luc10n4t1c42015'
 		);
-		
+		*/
 
 		// servidor janja
 		/*
@@ -200,18 +200,18 @@ class Database extends PDO {
 	}
 	
 	#### PROJETOS
-	public function toggleAnalise($proj) {
-		$analise = ($proj->getAnalise() == 0) ? 1 : 0;
+	public function setCiclo($proj, $idCiclo) {
 		$id = $proj->getId();
-		$sql = "UPDATE projeto set analise = $analise WHERE id = $id";
+		$sql = "UPDATE projeto set idCiclo = $idCiclo WHERE id = $id";
 		$result = $this->execute($sql);
 
-		$proj->setAnalise($analise);
+		$proj->setIdCiclo($idCiclo);
 
 		return $proj;
 		
 	}
 
+	// refactor
 	public function toggleAtivo($proj) {
 		$ativo = ($proj->getAtivo() == 0) ? 1 : 0;
 		$id = $proj->getId();
@@ -244,16 +244,16 @@ class Database extends PDO {
 		return $result;
 	}
 
-	public function getProjetos($idCat=null, $ativo = null) {
+	public function getProjetos($idCat=null, $idCiclo = null) {
 		if ($idCat != null) {
 			$sql = "SELECT id FROM projeto WHERE idCategoria = " . $idCat;
-			if ($ativo !== null) {
-				$sql .= " AND ativo = " . $ativo;
+			if ($idCiclo !== null) {
+				$sql .= " AND idCiclo = " . $idCiclo;
 			}
 		} else {
 			$sql = "SELECT id FROM projeto";
-			if ($ativo !== null) {
-				$sql .= " WHERE ativo = " . $ativo;
+			if ($idCiclo !== null) {
+				$sql .= " WHERE idCiclo = " . $idCiclo;
 			}
 		}
 		$result = $this->select($sql);
@@ -262,13 +262,13 @@ class Database extends PDO {
 
 	public function getProjetosBusca($termo="") {
 		$sql = "SELECT id FROM projeto WHERE
-		ativo = 1 AND nome LIKE '%" . $termo . "%'";
+		idCiclo >=3 AND nome LIKE '%" . $termo . "%'";
 		$result = $this->select($sql);
 		return $result;
 	}
 
 	public function getProjetosAleatorios() {
-		$sql = "SELECT id FROM projeto WHERE ativo = 1 ORDER BY rand() LIMIT 3";
+		$sql = "SELECT id FROM projeto WHERE idCiclo >= 3 ORDER BY rand() LIMIT 3";
 		$result = $this->select($sql);
 		return $result;
 
@@ -277,7 +277,7 @@ class Database extends PDO {
 	public function getProjeto($id) {
 
 		// implementar
-		$sql = 'SELECT idUser, idCategoria, nome, descricao, frase, valor, valorArrecadado, prazo, video, links, ativo, analise, dataRegistro, dataAtivacao, categoria 
+		$sql = 'SELECT idUser, idCategoria, nome, descricao, frase, valor, valorArrecadado, prazo, video, links, idCiclo, dataRegistro, dataAtivacao, categoria 
 		FROM projeto, categoria WHERE projeto.idCategoria = categoria.id AND projeto.id = ' . $id;
 		$result = $this->select($sql);
 
@@ -297,8 +297,7 @@ class Database extends PDO {
 		$projeto->setLinks(stripslashes($result[0]['links']));
 		$projeto->setDataRegistro($result[0]['dataRegistro']);
 		$projeto->setDataAtivacao($result[0]['dataAtivacao']);
-		$projeto->setAtivo($result[0]['ativo']);
-		$projeto->setAnalise($result[0]['analise']);
+		$projeto->setIdCiclo($result[0]['idCiclo']);
 
 
 		return $projeto;
@@ -318,16 +317,15 @@ class Database extends PDO {
 		$prazo       = addslashes($projeto->getPrazo());
 		$video       = addslashes($projeto->getVideo());
 		$links       = addslashes($projeto->getLinks());
-		$ativo       = $projeto->getAtivo();
-		$analise     = $projeto->getAnalise();
+		$idCiclo     = $projeto->getIdCiclo();
 
 
 		if ($id == null) {
 			$valorArrecadado = 0;
 			# grava o projeto no banco
 			$sql = "INSERT INTO projeto 
-			(idUser, idCategoria, nome, descricao, frase, valor, valorArrecadado, prazo, video, links, ativo, analise) 
-			VALUES ($idUser, $idCategoria, '$nome', '$descricao', '$frase', $valor, $valorArrecadado,  $prazo, '$video', '$links', $ativo, $analise)";
+			(idUser, idCategoria, nome, descricao, frase, valor, valorArrecadado, prazo, video, links, idCiclo) 
+			VALUES ($idUser, $idCategoria, '$nome', '$descricao', '$frase', $valor, $valorArrecadado,  $prazo, '$video', '$links', $idCiclo)";
 			$result = $this->execute($sql);
 			$projeto->setId($this->lastInsertId());
 
@@ -342,7 +340,7 @@ class Database extends PDO {
 			$sql = "UPDATE projeto SET 
 			idCategoria = $idCategoria, nome ='$nome', descricao='$descricao', frase='$frase', 
 			valor=$valor, valorArrecadado = $valorArrecadado, prazo='$prazo', video='$video', 
-			links='$links', ativo=$ativo, analise=$analise   
+			links='$links', idCiclo=$idCiclo   
 			WHERE id = $id";
 
 			$result = $this->execute($sql);
@@ -578,7 +576,7 @@ class Database extends PDO {
 	public function getAbertosList($pag=1, $pp=8) {
 		# total de páginas
 		$sql = 'SELECT COUNT(id) as count
-		FROM projeto WHERE analise = 1';
+		FROM projeto WHERE idCiclo = 2';
 
 		$result = $this->select($sql);
 		$total_registros = $result[0]['count'];
@@ -593,7 +591,7 @@ class Database extends PDO {
 
 		$sql = 'SELECT projeto.id as id, idCategoria, categoria, nome 
 		FROM projeto, categoria 
-		WHERE analise = 1 AND projeto.idCategoria = categoria.id 
+		WHERE idCiclo = 2 AND projeto.idCategoria = categoria.id 
 		LIMIT ' . $start . ' ,' . $end;
 		$result = $this->select($sql);
 
@@ -606,7 +604,7 @@ class Database extends PDO {
 
 	public function getAtivosList($pag=1, $pp=8) {
 		# total de páginas
-		$sql = 'SELECT COUNT(id) as count FROM projeto WHERE ativo = 1';
+		$sql = 'SELECT COUNT(id) as count FROM projeto WHERE idCiclo >= 3';
 
 		$result = $this->select($sql);
 		$total_registros = $result[0]['count'];
@@ -619,7 +617,7 @@ class Database extends PDO {
 
 		$sql = 'SELECT projeto.id as id, idCategoria, categoria, nome 
 		FROM projeto, categoria 
-		WHERE ativo = 1 AND projeto.idCategoria = categoria.id 
+		WHERE idCiclo >= 3 AND projeto.idCategoria = categoria.id 
 		LIMIT ' . $start . ' ,' . $end;
 		$result = $this->select($sql);
 
@@ -631,16 +629,6 @@ class Database extends PDO {
 	}
 
 
-	/*
-	public function getAtivosList() {
-		$sql = 'SELECT projeto.id as id, idCategoria, categoria, nome 
-		FROM projeto, categoria 
-		WHERE ativo = 1 AND projeto.idCategoria = categoria.id';
-		$result = $this->select($sql);
-
-		return $result;
-	}
-	*/
 
 	public function getOwnerInfo($idProjeto) {
 		$sql = 'SELECT user.nome as nome, email FROM user, projeto 

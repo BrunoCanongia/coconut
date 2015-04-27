@@ -21,6 +21,10 @@ class MoIPClient {
      * @param string $method Method used to send the request
 	 * @throws Exception
 	 * @return MoipResponse
+     *
+     *
+     * $url='https://desenvolvedor.moip.com.br/sandbox/ws/alpha/EnviarInstrucao/Unica'
+     * $url='https://www.moip.com.br/ws/alpha/EnviarInstrucao/Unica'
      */
     public function send($credentials, $xml, $url='https://desenvolvedor.moip.com.br/sandbox/ws/alpha/EnviarInstrucao/Unica', $method='POST') {
         $header[] = "Authorization: Basic " . base64_encode($credentials);

@@ -7,8 +7,8 @@ $idProjeto = $_GET['id'];
 
 $db = new Database;
 $proj = $db->getProjeto($idProjeto);
-if ($proj->getAnalise() == 0) {
-	$proj = $db->toggleAnalise($proj);
+if ($proj->getIdCiclo() == 1) {
+	$proj = $db->setCiclo($proj, 2);
 }
 
 header("location: projeto.php?id=$idProjeto");
