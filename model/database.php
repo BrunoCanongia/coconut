@@ -563,7 +563,30 @@ class Database extends PDO {
 
 		return $vip;
 	}
+
+	public function getAdminList() {
+		$sql = "SELECT id, email FROM vip";
+		$result = $this->select($sql);
+
+		return $result;
+	}
 	
+	public function deleteAdmin($vipId) {
+		$sql = "DELETE FROM vip WHERE id = " . $vipId;
+		$result = $this->execute($sql);
+
+		return true;
+
+	}
+
+	public function saveAdmin($email) {
+		$sql = "INSERT INTO vip (email) VALUES ('$email')";
+		$stmt = $this->prepare($sql);
+		$result = $stmt->execute();
+
+		return true;
+	}
+
 	/*public function getAbertosList() {
 		$sql = 'SELECT projeto.id as id, idCategoria, categoria, nome 
 		FROM projeto, categoria 
