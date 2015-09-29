@@ -6,6 +6,7 @@ class Database extends PDO {
 		
 		// servidor local
 		
+		/*
 		$config = array(
 			'db_type' => 'mysql',
 			'db_host' => 'localhost',
@@ -13,6 +14,7 @@ class Database extends PDO {
 			'db_username' => 'janjaCoconut',
 			'db_password' => 'janjaCoconut'
 		);
+		*/
 
 		//servidor solucionática
 		
@@ -26,15 +28,15 @@ class Database extends PDO {
 		*/
 
 		// servidor janja
-		/*
+		
 		$config = array(
 			'db_type' => 'mysql',
-			'db_host' => 'localhost',
-			'db_name' => 'rc2co684_coconut',
-			'db_username' => 'rc2co684_coconut',
-			'db_password' => 'janja2099'
+			'db_host' => 'mysql.rc2.kinghost.net',
+			'db_name' => 'rc2',
+			'db_username' => 'rc2',
+			'db_password' => 'camposr12345'
 		);
-		*/
+		
 		
 		try {
 			parent::__construct($config['db_type'].':host='.$config['db_host'].';dbname='.$config['db_name'],$config['db_username'],$config['db_password'],array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"));

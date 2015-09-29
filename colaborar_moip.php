@@ -24,8 +24,8 @@ $moip->setUniqueId($seed);
 $moip->setReason('Solucionatica - Fase de testes');
 $moip->setValue($colab->getValor());
 $moip->setEnvironment('test');
-$moip->setReturnURL('http://179.187.101.111:8080/coconut/projetos_apoiados.php');
-$moip->setNotificationURL('http://179.187.101.111:8080/coconut/labmoip.php');
+$moip->setReturnURL('http://rc2.kinghost.net/solucionatica/projetos_apoiados.php');
+$moip->setNotificationURL('http://rc2.kinghost.net/solucionatica/labmoip.php');
 $moip->validate();
 $moip->send();
 

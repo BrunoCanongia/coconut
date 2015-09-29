@@ -7,5 +7,7 @@ session_destroy();
 $app = explode("/", $_SERVER['REQUEST_URI'])[1];
 header("Location: http://" . $_SERVER['HTTP_HOST'] . "/" . $app . "/logar.php");
 */
-header("Location: http://localhost/coconut/logar.php");
+//header("Location: http://localhost/solucionatica/logar.php");
+$app = 'solucionatica';
+header("Location: http://" . $_SERVER['HTTP_HOST'] . "/" . $app . "/logar.php");
 ?>

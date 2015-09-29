@@ -22,11 +22,13 @@ $data['username'] = $nome[0];
 if (isset($_POST['id'])) {
 	$idProjeto = $_POST['id'];
 	$proj = $db->getProjeto($idProjeto);
-	if ($proj->getAtivo() == 0) {
-		$proj = $db->toggleAtivo($proj);
+	if ($proj->getIdCiclo() == 3) {
+		$proj->setIdCiclo(2);
+		$proj = $db->saveProjeto($proj);
 	}
-	if ($proj->getAnalise() == 1) {
-		$proj = $db->toggleAnalise($proj);
+	if ($proj->getIdCiclo() == 2) {
+		$proj->setIdCiclo(3);
+		$proj = $db->saveProjeto($proj);
 	}
 
  	header("location: adm_projetos_ativos.php");

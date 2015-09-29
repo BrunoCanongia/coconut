@@ -47,7 +47,7 @@
 					<span class="icon-bar"></span>
 				</button>
 				<a class="brand" href="index.php">
-					<img src="img/logo.png" class="logo"/>
+					<img src="img/logo-red.jpg" class="logo"/>
 				</a>
 			</div>
 			

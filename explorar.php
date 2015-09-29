@@ -18,10 +18,10 @@ if(isset($_GET['idCat'])) {
 	$categoria = $db->getCategoria($_GET['idCat']);
 	$template['idCat'] = $_GET['idCat'];
 	$template['categoria'] = $categoria[0]['categoria'];
-	$template['projetos'] = $ct->getProjetos($_GET['idCat'], 1);
+	$template['projetos'] = $ct->getProjetos($_GET['idCat'], 3);
 } else {
 	$template['idCat'] = 0;
-	$template['projetos'] = $ct->getProjetos(null, 1);
+	$template['projetos'] = $ct->getProjetos(null, 3);
 }
 
 

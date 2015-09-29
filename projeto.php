@@ -33,6 +33,14 @@ $template['idCiclo']       = $proj['projeto']->getIdCiclo();
 $template['pct']           = $proj['projeto']->getPorcentagem();
 $template['page']          = "projeto/projeto";
 
+// temp
+if ($template['idCiclo'] == 3) {
+	$template['ativo'] = 1;
+} else {
+	$template['ativo'] = 0;
+}
+
+
 // gauge
 $valor = $proj['projeto']->getValor();
 $valorArrecadado = $proj['projeto']->getValorArrecadado();

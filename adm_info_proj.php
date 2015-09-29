@@ -31,10 +31,10 @@ $template['categoria'] = $proj->getCategoria();
 $owner = $db->getOwnerInfo($id);
 $template['owner'] = $owner['nome'];
 $template['email'] = $owner['email'];
-$template['ativo'] = ($proj->getAtivo() == 0) ? "Inativo" : "Ativo";
-$template['analise'] = ($proj->getIdCiclo() 1= 2) ? "Não enviado" : "Em análise";
-$template['projAnalise'] = $proj->getAnalise();
-$template['projAtivo'] = $proj->getAtivo();
+$template['ativo'] = ($proj->getIdCiclo() == 3) ? "Inativo" : "Ativo";
+$template['analise'] = ($proj->getIdCiclo() == 2) ? "Não enviado" : "Em análise";
+$template['projAnalise'] = ($proj->getIdCiclo() == 2) ? 1 : 0;
+$template['projAtivo'] = ($proj->getIdCiclo() == 3) ? 1 : 0;
 
 
 

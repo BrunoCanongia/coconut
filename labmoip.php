@@ -2,6 +2,7 @@
 require_once("model/database.php");
 require_once("model/colaboracao.php");
 require_once("model/projeto.php");
+session_start();
 
 	$data['idTransacao']     = $_POST['id_transacao'];
 	$data['valor']           = $_POST['valor'];
